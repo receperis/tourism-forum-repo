@@ -11,20 +11,20 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Comments")
+@RequestMapping("/comments")
 public class CommentController {
 
     @Autowired
     private CommentService commentService;
 
     @GetMapping("")
-    public List<Comment> getAll(@RequestParam(required=false) Long commentId){
-        if (commentId==null) {
+    public List<Comment> getAll(@RequestParam(required = false) Long postId){
+        if (postId == null) {
             return commentService.getAll();
         }
 
         else {
-            return commentService.getAllByPostId(commentId);
+            return commentService.getAllByPostId(postId);
         }
     }
 
