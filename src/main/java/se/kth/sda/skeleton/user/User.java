@@ -1,10 +1,12 @@
 package se.kth.sda.skeleton.user;
 
 import org.hibernate.validator.constraints.Length;
+import se.kth.sda.skeleton.post.Post;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 @Table(name="account")
@@ -28,6 +30,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<Post> post;
     // Hibernate needs a default constructor to function
     public User() {}
 
