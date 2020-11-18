@@ -26,7 +26,7 @@ public class Comment {
     private Post post;
 
     public Comment() {}
-q
+
     public Comment (Long id, String body, User user, Post post) {
         this.id = id;
         this.body = body;
