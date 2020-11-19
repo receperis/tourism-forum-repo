@@ -25,8 +25,8 @@ function Navbar({ onLogout }) {
                     </li>
 
                     <li className="nav-item">
-                        <Link to="/chat" className="nav-link">
-                            Chat
+                        <Link to="/comment" className="nav-link">
+                            Comment
                             </Link>
                     </li>
                 </ul>
