@@ -1,2 +1,0 @@
-se/kth/sda/skeleton/SkeletonApplicationTests.java
- se.kth.sda.skeleton.SkeletonApplicationTests
