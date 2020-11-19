@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PostsApi from '../../api/PostsApi';
-import PostsForm from './PostsForm';
+import PostForm from './PostForm';
 import PostsList from "./PostsList";
 
 
@@ -18,15 +18,14 @@ function PostsPage() {
     }, []);
 
     const createPost = (postData) => {      
-        PostsApi.createPost("/posts",postData)
+        return PostsApi.createPost(postData)
             .then((res) => {
                 setPosts([res.data , ...posts]);
             });
-        console.log(postData);
     };
 
     const updatedPost = (updatedPost) => {
-        return PostsApi.updatePost("/posts",updatedPost)
+        return PostsApi.updatePost(updatedPost)
             .then(res => getAll());
     };
 
@@ -37,15 +36,16 @@ function PostsPage() {
 
     return (
         <div>
-            <div className="ml-7">
-                <button className="btn btn-primary float-right" onClick= {() => <PostsForm onSubmit = {console.log("checking data")}  onPostCreate={createPost} />}> Create a new Post</button>
-            </div>     
-             <PostsList 
-                posts={posts}
-                onPostUpdate={updatedPost} 
-                onPostDelete={deletePost}
-            />
-  
+            <PostForm onSubmit={createPost} />   
+            {
+                <PostsList 
+                    posts={posts}
+                    onPostUpdate={updatedPost} 
+                    onPostDelete={deletePost}
+                />
+      
+            } 
+            
         </div>    
     );
 }
