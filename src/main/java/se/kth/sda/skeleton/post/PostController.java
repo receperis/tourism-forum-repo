@@ -45,6 +45,8 @@ public class PostController {
 
     @PutMapping("")
     public Post update(@RequestBody Post updatedPost){
+        //TODO: check if current user is owner of the post
+        //compare current user and based on postID user of the post
         updatedPost.setUser(extractUserFromAuth());
         return postService.update(updatedPost);
     }

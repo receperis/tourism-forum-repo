@@ -30,7 +30,6 @@ public class CommentController {
         if (postId == null) {
             return commentService.getAll();
         }
-
         else {
             return commentService.getAllByPostId(postId);
         }
@@ -51,6 +50,8 @@ public class CommentController {
 
     @PutMapping("")
     public Comment update(@RequestBody Comment updatedComment){
+        //extractUserFromAuth());
+        //TODO: check if current user is owner of the comment
         updatedComment.setUser(extractUserFromAuth());
         return commentService.update(updatedComment);
     }
