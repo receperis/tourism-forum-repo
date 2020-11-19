@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
+import Auth from '../../services/Auth';
 
 function HomePage() {
+    const user = Auth.getUser();
     return (
         <div className="card">
             <div className="card-body">
                 <h4 className="card-title">SDA starter template</h4>
-                <p>This starter template is based on Spring, PostgreSQL, React, React router and Axios. Check the following links for documentation and guides:</p>
+                {user &&  <p> Welcome <b>{user.name}</b> </p> }
                 <ul>
                     <li><a href="https://spring.io/projects/spring-boot">Spring</a></li>
                     <li><a href="https://www.postgresql.org">PostgreSQL</a></li>

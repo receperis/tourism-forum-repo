@@ -25,3 +25,8 @@ body {
 .App-link {
   color: #09d3ac;
 }
+
+.photo{
+  width: 90px;
+  height: 80px;
+}
