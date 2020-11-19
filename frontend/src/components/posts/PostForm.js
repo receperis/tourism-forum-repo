@@ -4,15 +4,11 @@ function PostForm({initialTitle, initialBody, onSubmit, onCancel, formTitle}) {
   const [title, setTitle] = useState(initialTitle || "");
   const [body, setBody] = useState(initialBody || "");
 
-  const onCreatePostClick = () => {
+  const onCreatePostClick = (e) => {
+    e.preventDefault();
     const postData = { title, body };
-    console.log('!!!', postData)
-    onSubmit(postData).then(() => {
-      console.log('SUCCESS')
-    }).catch((err) => {
-      console.log('!!', err)
+    onSubmit(postData).catch((err) => {
       alert("error occured");
-      
     });
 };
 
