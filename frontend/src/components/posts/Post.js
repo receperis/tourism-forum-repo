@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import PostsApi from '../../api/PostsApi';
+import Auth from '../../services/Auth';
 import PostUpdateForm from './PostUpdateForm';
 
 function Post({post, onPostUpdate, onPostDelete }) {
@@ -14,13 +14,15 @@ function Post({post, onPostUpdate, onPostDelete }) {
             .then(() => setIsUpdate(false));
     };
 
+    const user = Auth.getUser();
+    const isMyPost = user && post.user.id === user.id;
 
     return (
     <div>
         {
             isUpdate ? <PostUpdateForm 
-                            initialTitle={post.initialTitle} 
-                            initialBody={post.initialBody}
+                            initialTitle={post.title} 
+                            initialBody={post.body}
                             onSubmit={onPostUpdateFormSubmit}
                         />
             :
@@ -35,14 +37,16 @@ function Post({post, onPostUpdate, onPostDelete }) {
                     {post.body}
                 </div>
 
-                <div className="mt-3">
-                    <button className="btn btn-warning" onClick={onUpdateClick}>
-                        Update
-                    </button>
-                    <button className="btn btn-danger ml-3" onClick= {() => onPostDelete(post)}>
-                        Delete
-                    </button>
-                </div>
+                {isMyPost && (
+                    <div className="mt-3">
+                        <button className="btn btn-warning" onClick={onUpdateClick}>
+                            Update
+                        </button>
+                        <button className="btn btn-danger ml-3" onClick= {() => onPostDelete(post)}>
+                            Delete
+                        </button>
+                    </div>
+                )}
             </div>    
         </div>
         }

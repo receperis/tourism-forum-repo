@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PostsApi from '../../api/PostsApi';
 import PostsList from "./PostsList";
-
+import PostUpdateForm from './PostUpdateForm';
 
 function PostsPage() {
     const [posts, setPosts] = useState([]);
+    const [createForm, setCreateForm] = useState(false);
 
     const getAll = () => {
         PostsApi.getAllPosts()
@@ -16,16 +17,16 @@ function PostsPage() {
         getAll();   
     }, []);
 
- /*    const createPost = (postData) => {      
-        PostsApi.createPost("/posts",postData)
+    const createPost = (postData) => {      
+        return PostsApi.createPost(postData)
             .then((res) => {
                 setPosts([res.data , ...posts]);
+                setCreateForm(false);
             });
-        console.log(postData);
-    }; */
+    }; 
 
     const updatedPost = (updatedPost) => {
-        return PostsApi.updatePost("/posts",updatedPost)
+        return PostsApi.updatePost(updatedPost)
             .then(res => getAll());
     };
 
@@ -35,7 +36,7 @@ function PostsPage() {
     }
 
     const createNewPost = () => {
-        alert("willbe redirected to create new forum");
+        setCreateForm(true);
     }
 
 
@@ -44,11 +45,17 @@ function PostsPage() {
             <div className="ml-7">
                 <button className="btn btn-primary float-right" onClick= {() => createNewPost()}> Create a new Post</button>
             </div>
-             <PostsList 
-                posts={posts} 
-                onPostUpdate={updatedPost} 
-                onPostDelete={deletePost}
-            />
+            {createForm ? 
+                <PostUpdateForm 
+                    onSubmit={createPost}
+                />
+             : 
+                <PostsList 
+                    posts={posts} 
+                    onPostUpdate={updatedPost} 
+                    onPostDelete={deletePost}
+                />
+            }
         </div>
        
     );

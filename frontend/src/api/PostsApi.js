@@ -9,12 +9,12 @@ class PostsApi {
         return Api.get('/posts/'+id);
     }
 
-    createPost(post) {
-        return Api.post('/posts', post);
+    createPost(data) {
+        return Api.post('/posts', data);
     }
 
-    updatePost(post) {
-        return Api.put('/posts', post);
+    updatePost(data) {
+        return Api.put('/posts', data);
     }
 
     deletePost(id) {
