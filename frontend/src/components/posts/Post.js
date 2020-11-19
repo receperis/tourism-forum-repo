@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import PostForm from "./PostForm";
+import Auth from '../../services/Auth';
 
 function Post({ post, onPostUpdate, onPostDelete }) {
 
   const [isUpdate, setIsUpdate] = useState(false);
+
+  const user = Auth.getUser();
+  const isMyPost = user && post.user.id === user.id
 
   const onUpdateClick = () => {
     setIsUpdate(true);
@@ -15,6 +19,10 @@ function Post({ post, onPostUpdate, onPostDelete }) {
       .then(() => setIsUpdate(false));
   };
 
+  const onPostFormCancel = () => {
+    setIsUpdate(false)
+  }
+
   return (
     <div>
       {
@@ -24,6 +32,8 @@ function Post({ post, onPostUpdate, onPostDelete }) {
           initialTitle={post.title}
           initialBody={post.body}
           onSubmit={onPostFormSubmit}
+          onCancel={onPostFormCancel}
+          formTitle="Update post"
         />
         )
        : (
@@ -31,20 +41,23 @@ function Post({ post, onPostUpdate, onPostDelete }) {
           <div className="card-body">
             <div className="card-title">
               <h3>{post.title}</h3>
+              <p className="badge badge-primary text-wrap">{post.user.name}</p>
             </div>
             <div>{post.body}</div>
 
-            <div className="mt-3">
-              <button className="btn btn-warning" onClick={onUpdateClick}>
-                Update
-              </button>
-              <button
-                className="btn btn-danger ml-3"
-                onClick={() => onPostDelete(post)}
-              >
-                Delete
-              </button>
-            </div>
+            {isMyPost && (
+              <div className="mt-3">
+                <button className="btn btn-warning" onClick={onUpdateClick}>
+                  Update
+                </button>
+                <button
+                  className="btn btn-danger ml-3"
+                  onClick={() => onPostDelete(post)}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
         </div>
         )

@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 
-function PostForm({onSubmit}) {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+function PostForm({initialTitle, initialBody, onSubmit, onCancel, formTitle}) {
+  const [title, setTitle] = useState(initialTitle || "");
+  const [body, setBody] = useState(initialBody || "");
 
   const onCreatePostClick = () => {
     const postData = { title, body };
-    onSubmit(postData)
-        .then(() => {
-           setTitle("");
-           setBody(""); 
-        })
-        .catch((err) => alert("error occured"));
+    console.log('!!!', postData)
+    onSubmit(postData).then(() => {
+      console.log('SUCCESS')
+    }).catch((err) => {
+      console.log('!!', err)
+      alert("error occured");
+      
+    });
 };
 
   return (
     <div className="card mt-4">
       <div className="card-body">
-        <h4 className="card-title">Create a post</h4>
-        <div>
+        <h4 className="card-title">{formTitle || "Create a post"}</h4>
+        <form onSubmit={onCreatePostClick}>
           <div className="form-group">
             <label>Title:</label>
             <input
@@ -27,6 +29,7 @@ function PostForm({onSubmit}) {
               placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              required
             />
           </div>
 
@@ -37,17 +40,24 @@ function PostForm({onSubmit}) {
               placeholder="Post Body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
+              required
             />
           </div>
 
           <div className="form-group">
             <button
               className="btn btn-primary"
-              onClick={onCreatePostClick}>
+              type="submit">
               Save
             </button>
+            <button
+              className="btn btn-outline"
+              type="button"
+              onClick={onCancel}>
+              Cancel
+            </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

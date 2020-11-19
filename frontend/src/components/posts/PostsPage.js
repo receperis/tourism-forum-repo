@@ -6,11 +6,12 @@ import PostsList from "./PostsList";
 
 function PostsPage() {
     const [posts, setPosts] = useState([]);
+    const [createForm, setCreateForm] = useState(false);
 
     const getAll = () => {
         PostsApi.getAllPosts()
             .then((res) => {
-                setPosts(res.data.sort((a,b) => a.id - b.id));
+                setPosts(res.data.sort((a,b) => b.id - a.id));
             });
     }
     useEffect(() => {
@@ -21,6 +22,7 @@ function PostsPage() {
         return PostsApi.createPost(postData)
             .then((res) => {
                 setPosts([res.data , ...posts]);
+                setCreateForm(false);
             });
     };
 
@@ -34,16 +36,28 @@ function PostsPage() {
             .then(() => setPosts(posts.filter(a => a.id !== post.id)));
     }
 
+    const onCreateNewPost = () => {
+        setCreateForm(true);
+    }
+
+    const onCancelCreateForm = () => {
+        setCreateForm(false);
+    }
+
+
     return (
         <div>
-            <PostForm onSubmit={createPost} />   
-            {
-                <PostsList 
-                    posts={posts}
-                    onPostUpdate={updatedPost} 
-                    onPostDelete={deletePost}
-                />
-      
+            {createForm ? 
+                <PostForm onSubmit={createPost} onCancel={onCancelCreateForm} />   
+            :
+                <>
+                    <button className="btn btn-primary" onClick= {onCreateNewPost}> Create a new Post</button>
+                    <PostsList 
+                        posts={posts}
+                        onPostUpdate={updatedPost} 
+                        onPostDelete={deletePost}
+                    />
+                </>
             } 
             
         </div>    
