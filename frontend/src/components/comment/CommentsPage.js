@@ -7,33 +7,36 @@ import CommentsApi from "../../api/CommentsApi";
 function CommentsPage() {
     const [comments, setComments] = useState([]);
 
+    const getAll = () => {
+        CommentsApi.getAllComments()
+            .then(res => setComments(res.data));
+    }
+
+    useEffect(() => {
+        getAll();
+    }, []);
+
     const createComment = (commentData) => {
+        console.log("comment data",commentData);
         return CommentsApi.createComment(commentData)
         .then((res)=> {
             setComments([res.data, ...comments]);
         });
     };
 
-    const getAll = () => {
-        CommentsApi.getAllComments()
-            .then(res => setComments(res.data));
-    }
-
     const deleteComment = (comment) => {
        return CommentsApi.deleteComment(comment.id)
             .then(() => setComments(comments.filter(a => a.id !== comment.id)));
     }
-
-    useEffect(() => {
-        getAll();
-    }, []);
-    
+ 
     return (
         <div>
-           <CommentForm onSubmit = { createComment } />
+           <CommentForm onSubmit = {createComment} />
            {
-               <CommentCard comments= {comments}
-               onCommentDelete = {deleteComment} />
+               <CommentCard 
+                    comments= {comments}
+                    onCommentDelete = {deleteComment} 
+                />
            }
         </div>
     );
