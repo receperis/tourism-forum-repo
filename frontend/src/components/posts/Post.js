@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PostForm from "./PostForm";
 import Auth from '../../services/Auth';
 
-function Post({ post, onPostUpdate, onPostDelete }) {
+function Post({ post, onPostUpdate, onPostDelete, onPostComment}) {
 
   const [isUpdate, setIsUpdate] = useState(false);
 
@@ -55,6 +55,11 @@ function Post({ post, onPostUpdate, onPostDelete }) {
                   onClick={() => onPostDelete(post)}
                 >
                   Delete
+                </button>
+                <button className="btn btn-info ml-3"
+                   onClick={() => onPostComment(post)}>
+                    
+                  Add Comment 
                 </button>
               </div>
             )}
