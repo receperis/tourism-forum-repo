@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import CommentsApi from "../../api/CommentsApi";
 import PostsApi from '../../api/PostsApi';
 import PostForm from './PostForm';
 import PostsList from "./PostsList";
+import { Link } from 'react-router-dom'
 
 
 function PostsPage() {
@@ -36,6 +38,18 @@ function PostsPage() {
             .then(() => setPosts(posts.filter(a => a.id !== post.id)));
     }
 
+   /*  const commentPost = (post) => {
+        return CommentsApi.getCommentById(post.id)
+            .then((res) => console.log(res.data));
+    } */
+
+    const commentPost = (post) => {
+        console.log("post details",post);
+      /*   return CommentsApi.getCommentById(post.id)
+        .then((res) =>  */
+        <Link to={`/comments/${post.id}`}/>;
+    }
+
     const onCreateNewPost = () => {
         setCreateForm(true);
     }
@@ -56,6 +70,7 @@ function PostsPage() {
                         posts={posts}
                         onPostUpdate={updatedPost} 
                         onPostDelete={deletePost}
+                        onPostComment={commentPost}
                     />
                 </>
             } 
