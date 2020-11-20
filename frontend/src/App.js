@@ -16,12 +16,16 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from './components/home/HomePage';
 import PostsPage from "./components/posts/PostsPage";
 import CommentsPage from './components/comment/CommentsPage';
+import Footer from "./components/footer/Footer";
+
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   Auth.bindLoggedInStateSetter(setLoggedIn);
   
   const loggedInRouter = (
+     
             <Router>
                 <Navbar onLogout={() => Auth.logout()} />
 
@@ -40,7 +44,12 @@ function App() {
                         </Route>
                     </Switch>
                 </div>
+
+                <Footer />
             </Router>
+           
+           
+            
   );
 
   return (loggedIn ? loggedInRouter : <LoginPage/>);
