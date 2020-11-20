@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CommentsApi from "../../api/CommentsApi";
 import PostsApi from '../../api/PostsApi';
 import PostForm from './PostForm';
 import PostsList from "./PostsList";
