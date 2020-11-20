@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from '../../assets/images/logo.jpeg';
 
+
+
 function Navbar({ onLogout }) {
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand" href="/"><img className="photo" src= {logo} alt = "Logo"  /></a>
@@ -29,10 +32,16 @@ function Navbar({ onLogout }) {
                             Comment
                             </Link>
                     </li>
+                    
                 </ul>
 
+                
+
                 <button className="btn btn-outline-info my-2 my-sm-0" onClick={onLogout}>Logout</button>
+                
             </div>
+
+            
         </nav>
     );
 }
