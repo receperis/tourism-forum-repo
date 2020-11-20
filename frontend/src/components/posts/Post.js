@@ -45,24 +45,26 @@ function Post({ post, onPostUpdate, onPostDelete, onPostComment}) {
             </div>
             <div>{post.body}</div>
 
-            {isMyPost && (
-              <div className="mt-3">
-                <button className="btn btn-warning" onClick={onUpdateClick}>
-                  Update
-                </button>
-                <button
-                  className="btn btn-danger ml-3"
-                  onClick={() => onPostDelete(post)}
-                >
-                  Delete
-                </button>
-                
-              </div>
-            )}
-            <button className="btn btn-info ml-3"
-                   onClick={() => onPostComment(post)}>
-                  Add Comment 
-                </button>
+            <div className="mt-3">
+              {isMyPost && (
+                <>
+                  <button className="btn btn-warning" onClick={onUpdateClick}>
+                    Update
+                  </button>
+                  <button
+                    className="btn btn-danger ml-3"
+                    onClick={() => onPostDelete(post)}
+                  >
+                    Delete
+                  </button>
+                </>
+              )}
+              <button className="btn btn-info mcl-3"
+              onClick={() => onPostComment(post)}>
+              Add Comment 
+              </button>
+            </div>
+            
           </div>
         </div>
         )

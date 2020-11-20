@@ -6,6 +6,7 @@ import './Css/style.css';
 
 import Auth from "./services/Auth";
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/footer/Footer";
 
 // Import pages
 import LoginPage from "./components/auth/LoginPage";
@@ -40,6 +41,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <Footer />
     </Router>
   );
 
