@@ -9,8 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import se.kth.sda.skeleton.comment.Comment;
-import se.kth.sda.skeleton.comment.CommentService;
 import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
 
@@ -41,25 +39,29 @@ public class PostController {
 
     @PostMapping("")
     public Post create(@RequestBody Post newPost){
-
-        //extracting information about the user from current session (not from front end)
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) auth.getPrincipal();
-        User user = userService.findUserByEmail(userDetails.getUsername());
-        newPost.setUser(user);
+        newPost.setUser(extractUserFromAuth());
         return postService.create(newPost);
     }
 
     @PutMapping("")
     public Post update(@RequestBody Post updatedPost){
+        //TODO: check if current user is owner of the post
+        //compare current user and based on postID user of the post
+        updatedPost.setUser(extractUserFromAuth());
         return postService.update(updatedPost);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         postService.delete(id);
+    }
 
-
+    //extracting information about the user from current session (not from front end)
+    public User extractUserFromAuth()
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        return userService.findUserByEmail(userDetails.getUsername());
     }
 
 }
