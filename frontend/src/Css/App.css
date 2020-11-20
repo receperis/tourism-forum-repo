@@ -1,6 +1,6 @@
 body {
   min-height: 100vh;
-  background-image: url(./assets/images/bground.jpeg);
+  background-image: url("../assets/images/bground.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   }
@@ -29,8 +29,3 @@ body {
   color: #09d3ac;
 }
 
-.photo{
-  width: 90px;
-  height: 80px;
-  border-radius: 10px;
-}

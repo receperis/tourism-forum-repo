@@ -1,22 +1,34 @@
 import React from "react";
 import Auth from '../../services/Auth';
+import travel1 from '../../assets/images/travel1.jpeg';
+import travel2 from '../../assets/images/travel2.jpeg';
+import travel3 from '../../assets/images/travel3.jpeg';
+import travel4 from '../../assets/images/travel4.jpeg';
+import travel5 from '../../assets/images/travel5.jpeg';
+import travel6 from '../../assets/images/travel6.jpeg';
+
+
 
 function HomePage() {
-
-    const user = Auth.getUser()
-
+    const user = Auth.getUser();
+    
     return (
-        <div className="card">
-            <div className="card-body">
-                <h4 className="card-title">SDA starter template</h4>
-                {user &&  <p> Welcome!!! <b>{user.name} !!</b> </p> }
-                <ul>
-                    <li><a href="https://spring.io/projects/spring-boot">Spring</a></li>
-                    <li><a href="https://www.postgresql.org">PostgreSQL</a></li>
-                    <li><a href="https://reactjs.org">React</a></li>
-                    <li><a href="https://reacttraining.com/react-router/web/guides/quick-start">React Router</a></li>
-                    <li><a href="https://github.com/axios/axios">Axios</a></li>
-                </ul>
+        <div className="home">
+            <div className="home-body">
+            {user &&  <p className="welcome"> Welcome {user.name} </p> }
+                <h2 className="welcome-header">Beautiful Destinations</h2>
+                <p className="welcome-p">This is the  place where we inspire people to connect and have positive impact through travel.
+                    We are a climate positive forum that advocates sustainability.
+                </p>
+                <p className="welcome-p">Journey with us and choose your own path. We equip you with a roadmap to design the journey of your dreams.</p>
+                <div className="grid-welcome">
+                <img className="travel" src= {travel1} alt = "Travel1"  />
+                <img className="travel" src= {travel2} alt = "Travel2"  />
+                <img className="travel" src= {travel3} alt = "Travel3"  />
+                <img className="travel" src= {travel4} alt = "Travel4"  />
+                <img className="travel" src= {travel5} alt = "Travel5"  />
+                <img className="travel" src= {travel6} alt = "Travel6"  />
+                </div>
             </div>
         </div>
     );
