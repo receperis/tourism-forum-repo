@@ -56,13 +56,13 @@ function Post({ post, onPostUpdate, onPostDelete, onPostComment}) {
                 >
                   Delete
                 </button>
-                <button className="btn btn-info ml-3"
-                   onClick={() => onPostComment(post)}>
-                    
-                  Add Comment 
-                </button>
+                
               </div>
             )}
+            <button className="btn btn-info ml-3"
+                   onClick={() => onPostComment(post)}>
+                  Add Comment 
+                </button>
           </div>
         </div>
         )
