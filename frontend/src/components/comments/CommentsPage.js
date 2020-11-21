@@ -43,7 +43,7 @@ function CommentsPage({props}) {
     return (
         
         <div>
-           <CommentForm onSubmit = {createComment}/> 
+           {/* <CommentForm onSubmit = {createComment}/>  */}
            {
                <CommentsList
                     comment= {comments}
