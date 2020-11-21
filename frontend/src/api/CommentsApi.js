@@ -10,7 +10,7 @@ class CommentsApi {
     }
 
     createComment(comment) {
-        return Api.comment('/comments', comment);
+        return Api.post('/comments', comment);
     }
 
     updateComment(comment) {
@@ -18,7 +18,7 @@ class CommentsApi {
     }
 
     deleteComment(id) {
-        return Api.comment('/comments/' +id);
+        return Api.delete('/comments/' +id);
     } 
 }
 

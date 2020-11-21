@@ -30,8 +30,8 @@ function Navbar({ onLogout }) {
                     </li>
 
                     <li className="nav-item">
-                        <Link to="/comment" className="nav-link">
-                            Comment
+                        <Link to="/comments" className="nav-link">
+                            Comments
                             </Link>
                     </li>
                     
