@@ -22,6 +22,7 @@ function HomePage() {
                 </p>
                 <p className="welcome-p">Journey with us and choose your own path. We equip you with a roadmap to design the journey of your dreams.</p>
                 <div className="grid-welcome">
+                    
                 <img className="travel" src= {travel1} alt = "Travel1"  />
                 <img className="travel" src= {travel2} alt = "Travel2"  />
                 <img className="travel" src= {travel3} alt = "Travel3"  />

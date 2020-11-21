@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function CommentForm({ onSubmit }){
     const[body, setBody] = useState("");
     return(
-        <div className="card">
+        <div className="comment">
             <div className= "card-body">
                 <label>Comment:</label>
                     <textarea 

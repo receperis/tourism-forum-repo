@@ -1,0 +1,29 @@
+.comment{
+    background-color: #bce6eb;
+    width: 700px;
+      height: 230px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+      justify-content: center;
+      margin-left: 250px;
+      font-family: 'Roboto Slab', serif;
+    }
+
+    .comment-list{
+        width: 700px;
+      height: 150px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color:  #bce6eb;
+      resize: none;
+      justify-content: space-between;
+      margin-left: 250px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      font-family: 'Roboto Slab', serif;
+    }

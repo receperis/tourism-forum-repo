@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Comment({comment, onCommentDelete}){
-    return <div className="card mt-4">
+    return <div className="comment-list">
         <div className="card-body">
             <div>
                 {comment.body}
