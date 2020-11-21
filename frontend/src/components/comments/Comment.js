@@ -31,6 +31,7 @@ function Comment({ comment, onCommentDelete, onCommentUpdate }) {
       <div className="card mt-4">
         <div className="card-body">
           <div>{comment.body}</div>
+          <p className="badge badge-primary text-wrap">{comment.user.name}</p>
 
           <div>
             <button
