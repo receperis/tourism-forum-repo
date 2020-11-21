@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import PostForm from "./PostForm";
 import Auth from '../../services/Auth';
+import CommentForm from '../comments/CommentForm';
 
-function Post({ post, onPostUpdate, onPostDelete, onPostComment}) {
+function Post({ post, onPostUpdate, onPostDelete }) {
 
   const [isUpdate, setIsUpdate] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const user = Auth.getUser();
   const isMyPost = user && post.user.id === user.id
@@ -21,6 +23,14 @@ function Post({ post, onPostUpdate, onPostDelete, onPostComment}) {
 
   const onPostFormCancel = () => {
     setIsUpdate(false)
+  }
+
+  const onCreateCommentClick = (data) => {
+    setIsFormOpen(true);
+  }
+
+  const onCreateCommentCancel = () => {
+    setIsFormOpen(false)
   }
 
   return (
@@ -59,12 +69,18 @@ function Post({ post, onPostUpdate, onPostDelete, onPostComment}) {
                   </button>
                 </>
               )}
-              <button className="btn btn-info mcl-3"
-              onClick={() => onPostComment(post)}>
-              Add Comment 
+              <button type="button" className="btn btn-info ml-3" data-toggle="modal" data-target="#myModal" onClick={onCreateCommentClick}>
+                  Add Comment 
               </button>
-            </div>
-            
+              </div>
+              { isFormOpen &&
+               < CommentForm
+                  onCancel={onCreateCommentCancel}
+                  onSubmit={onCreateCommentClick}
+                  isFormOpen={setIsFormOpen}
+                  post={post}            
+                />        
+              }      
           </div>
         </div>
         )
