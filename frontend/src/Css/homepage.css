@@ -6,13 +6,19 @@
     border-radius: 10px;
   }
   
-  .travel{
-    width: 500px;
-    height: 500px;
+  .travel {
+    width: 300px;
+    height: 250px;
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
     border: 5px solid #555;
+  }
+
+  .travel:hover {
+    -ms-transform: scale(1); /* IE 9 */
+    -webkit-transform: scale(1); /* Safari 3-8 */
+    transform: scale(1.5); 
   }
 
   .welcome{
@@ -29,7 +35,7 @@
 }
 
 .welcome-p{
-font-family: 'Slabo 27px', serif;
+font-family: 'Roboto Slab', serif;
 font-size: 20px;
 color: black;
 }

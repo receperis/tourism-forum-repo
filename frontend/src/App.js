@@ -32,7 +32,7 @@ function App() {
             <CommentsPage />
           </Route>
           <Route
-            path="/comments/:id"
+            path="/comments?postId=:id"
             render={({ match }) => <CommentPageDetails match={match} />}
           />
           <Route path="/">

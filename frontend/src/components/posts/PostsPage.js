@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import PostsApi from '../../api/PostsApi';
 import PostForm from './PostForm';
@@ -59,7 +60,7 @@ function PostsPage() {
                 </>
             } 
             
-        </div>    
+        </div>
     );
 }
 

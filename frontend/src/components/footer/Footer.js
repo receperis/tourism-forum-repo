@@ -6,7 +6,7 @@ function Footer() {
     <MDBFooter color="cyan" className="font-small darken-3 pt-0 mt-5">
       <MDBContainer>
         <MDBRow>
-          <MDBCol md="12" className="py-5">
+          <MDBCol md="12" className="py-3">
             <div className="mb-5 flex-center">
             <a className="fb-ic" href="https://www.facebook.com/munamiicupcakes/">
                 <i className="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x">
