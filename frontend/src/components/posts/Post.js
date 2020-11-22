@@ -52,7 +52,7 @@ function Post({ post, onPostUpdate, onPostDelete }) {
         <div className="card mt-4">
           <div className="card-body">
             <div className="card-title">
-              <Link to={`comments?postId=${post.id}`}>
+              <Link to={`/post/${post.id}/comments`}>
                 <h3>{post.title}</h3>
               </Link>
               

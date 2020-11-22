@@ -10,19 +10,17 @@ export default function CommentPageDetails({match}) {
     const [comments, setComments] = useState([]);
 
     const getAllCommentsByPostId = () => {
-        return CommentsApi.getAll(match.params.id) 
-            //.then(res => setComments(res.data));
-           .then(res => console.log("comments data",res.data));
+        return CommentsApi.getCommentById(match.params.id) 
+           .then(res => setComments(res.data));
     }
    
-  /*   useEffect(() => {
+    useEffect(() => {
         getAllCommentsByPostId();
-    }, []); */
+    }, []);
+
     return (
-        
             <div>
-            
-              <h1> CommentPageDetails</h1>
+              <h1>All the comments to post id = {match.params.id} </h1>
                {
                    <CommentsList
                         comment= {comments}
