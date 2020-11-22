@@ -6,7 +6,7 @@ class CommentsApi {
     }
 
     getCommentById(id) {
-        return Api.get('/comments/'+id);
+        return Api.get('/comments?postId='+id);
     }
 
     createComment(comment) {
