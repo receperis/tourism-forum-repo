@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import CommentForm from './CommentForm';
+import Auth from '../../services/Auth';
 
 function Comment({ comment, onCommentDelete, onCommentUpdate }) {
   const [isUpdate, setIsUpdate] = useState(false);
+
+  const user = Auth.getUser();
+  const isMyPost = user && comment.user.id === user.id;
+
 
   const onUpdateComment = () => {
     setIsUpdate(true);
@@ -33,7 +38,10 @@ function Comment({ comment, onCommentDelete, onCommentUpdate }) {
           <div>{comment.body}</div>
           <p className="badge badge-primary text-wrap">{comment.user.name}</p>
 
-          <div>
+
+          <div className="mt-3">
+          {isMyPost && (
+             <>
             <button
               className="btn btn-danger mt-3"
               onClick={() => onCommentDelete(comment)}
@@ -45,6 +53,8 @@ function Comment({ comment, onCommentDelete, onCommentUpdate }) {
               onClick={onUpdateComment}>
               update
             </button>
+            </>
+            )}
           </div>
         </div>
       </div>
