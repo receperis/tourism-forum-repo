@@ -26,7 +26,7 @@ function CommentsPage() {
 
     const updateComment  = (comment) => {
         return CommentsApi.updateComment(comment)
-            .then(res => console.log(res.data));
+            .then(res => getAll());
     }
 
     const deleteComment = (comment) => {
@@ -37,7 +37,6 @@ function CommentsPage() {
     return (
         
         <div>
-           {/* <CommentForm onSubmit = {createComment}/>  */}
            {
                <CommentsList
                     comment= {comments}
