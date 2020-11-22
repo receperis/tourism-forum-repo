@@ -2,7 +2,6 @@ import React from 'react';
 import Post from './Post';
 
 function PostsList({posts, onPostUpdate, onPostDelete}) {
-    console.log("posts details",posts);
     return <div className="mt-4">
         {
           posts.map(post => (<Post 
