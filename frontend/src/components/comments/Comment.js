@@ -48,11 +48,11 @@ function Comment({ comment, onCommentDelete, onCommentUpdate }) {
             >
               Delete
             </button>
-            <button
+            {/* <button
               className="btn btn-warning mt-3 ml-2"
               onClick={onUpdateComment}>
               update
-            </button>
+            </button> */}
             </>
             )}
           </div>
