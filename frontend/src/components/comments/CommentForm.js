@@ -1,15 +1,24 @@
 import React, { useState } from "react";
+import CommentsApi from "../../api/CommentsApi";
 
-export default function CommentForm({ onSubmit, initialBody, onCancel, formTitle}) {
+
+export default function CommentForm({
+  onSubmit,
+  initialBody,
+  onCancel,
+  formTitle,
+  isFormOpen,
+  post
+}) {
   const [body, setBody] = useState(initialBody || "");
 
   const onCreateCommentClick = (e) => {
     e.preventDefault();
-    const postData = { body };
-    onSubmit(postData).catch((err) => {
-      alert("error occured");
-    });
-    };
+    const commentData = { body, post:post};
+    return CommentsApi.createComment(commentData)
+      .then(() => isFormOpen(false));        
+  };
+
   return (
     <div className="comment">
       <div className="card-body">
@@ -29,6 +38,13 @@ export default function CommentForm({ onSubmit, initialBody, onCancel, formTitle
           <div className="form-group">
             <button className="btn btn-info" type="submit">
               Save
+            </button>
+            <button
+              className="btn btn-outline"
+              type="button"
+              onClick={onCancel}
+            >
+              Cancel
             </button>
           </div>
         </form>

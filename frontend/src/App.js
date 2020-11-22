@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Import custom styles for our application
-import './Css/style.css';
+import "./Css/style.css";
 
 import Auth from "./services/Auth";
 import Navbar from "./components/layout/Navbar";
@@ -25,17 +25,16 @@ function App() {
 
       <div className="container mt-5">
         <Switch>
-          <Route path="/posts">
+          <Route exact path="/posts">
             <PostsPage />
           </Route>
-          <Route path="/comments">
+          <Route exact path="/comments">
             <CommentsPage />
           </Route>
-
-          <Route path="/comments/:id">
-            <CommentPageDetails />
-          </Route>
-
+          <Route
+            path="/post/:id/comments"
+            render={({ match }) => <CommentPageDetails match={match} />}
+          />
           <Route path="/">
             <HomePage />
           </Route>
