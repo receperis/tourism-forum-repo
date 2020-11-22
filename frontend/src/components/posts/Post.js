@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PostForm from "./PostForm";
 import Auth from '../../services/Auth';
+import {Link} from "react-router-dom";
 import CommentForm from '../comments/CommentForm';
 
 function Post({ post, onPostUpdate, onPostDelete }) {
@@ -50,7 +51,10 @@ function Post({ post, onPostUpdate, onPostDelete }) {
         <div className="card mt-4">
           <div className="card-body">
             <div className="card-title">
-              <h3>{post.title}</h3>
+              <Link to={`comments/${post.id}`}>
+                <h3>{post.title}</h3>
+              </Link>
+              
               <p className="badge badge-primary text-wrap">{post.user.name}</p>
             </div>
             <div>{post.body}</div>
