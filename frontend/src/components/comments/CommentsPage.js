@@ -1,10 +1,9 @@
 
 import React ,{ useState, useEffect } from "react";
-import CommentForm from "./CommentForm";
 import CommentsList from './CommentsList';
 import CommentsApi from "../../api/CommentsApi";
 
-function CommentsPage({props}) {
+function CommentsPage() {
   const [comments, setComments] = useState([]);
     
   const getAll = () => {
@@ -13,22 +12,17 @@ function CommentsPage({props}) {
             
     }
 
-   /*  const getAllCommentsByPostId = () => {
-        CommentsApi.getCommentById(props.id) 
-            .then(res => setComments(res.data));
-    }
- */
     useEffect(() => {
         getAll();
     }, []);
 
 
-    const createComment = (commentData) => {
+  /*   const createComment = (commentData) => {
         return CommentsApi.createComment(commentData)
         .then((res)=> {
             setComments([res.data, ...comments]);
         });
-    };
+    }; */
 
     const updateComment  = (comment) => {
         return CommentsApi.updateComment(comment)
