@@ -38,9 +38,9 @@ function Post({ post, onPostUpdate, onPostDelete, onPostComment}) {
         />
         )
        : (
-        <div className="card mt-4">
-          <div className="card-body">
-            <div className="card-title">
+        <div className="list">
+          <div className="list-body">
+            <div className="list-title">
               <h3>{post.title}</h3>
               <p className="badge badge-primary text-wrap">{post.user.name}</p>
             </div>

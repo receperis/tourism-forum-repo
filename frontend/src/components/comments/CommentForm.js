@@ -11,7 +11,7 @@ export default function CommentForm({ onSubmit, initialBody, onCancel, formTitle
     });
     };
   return (
-    <div className="card mt-4">
+    <div className="comment">
       <div className="card-body">
         <h4 className="card-title">{formTitle || "Create a comment"}</h4>
         <form onSubmit={onCreateCommentClick}>

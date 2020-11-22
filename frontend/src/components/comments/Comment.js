@@ -28,7 +28,7 @@ function Comment({ comment, onCommentDelete, onCommentUpdate }) {
             formTitle="Update comment"
         />
     ) : (
-      <div className="card mt-4">
+      <div className="comment-list">
         <div className="card-body">
           <div>{comment.body}</div>
 

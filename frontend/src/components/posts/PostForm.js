@@ -13,9 +13,9 @@ function PostForm({initialTitle, initialBody, onSubmit, onCancel, formTitle}) {
 };
 
   return (
-    <div className="card mt-4">
-      <div className="card-body">
-        <h4 className="card-title">{formTitle || "Create a post"}</h4>
+    <div className="post">
+      <div className="post-body">
+        <h4 className="post-title">{formTitle || "Create a post"}</h4>
         <form onSubmit={onCreatePostClick}>
           <div className="form-group">
             <label>Title:</label>
